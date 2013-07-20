@@ -1,0 +1,16 @@
+require 'rubygems'
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+  :adapter => 'sqllite3',
+  :database => 'sms.db'
+)
+
+class Message < ActiveRecord::Base
+end
+
+Message.all.each do |m|
+  puts m
+end
+
+

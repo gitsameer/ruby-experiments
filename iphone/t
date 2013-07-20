@@ -1,0 +1,18 @@
+require 'rubygems'
+require 'active_record'
+
+ActiveRecord::Base.configurations["db1"] = (
+  :adapter => 'sqlite3',
+  :database => 'sms.db'
+)
+
+class Message < ActiveRecord::Base
+  self.table_name = 'message'
+  establish_connection "db1"
+end
+
+Message.all.each do |m|
+  puts m.address, m.date
+end
+
+
