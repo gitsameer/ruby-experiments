@@ -14,9 +14,10 @@
         $( "a" ).click(function( event ) {
             $.ajax( {
               type: "POST",
-              url: "http://localhost:9393/message",
-              data: "body=testingnew2",
-              success: function( response ) {
+              url: "http://localhost:9393/message/6",
+              data: "body=testingnew66&_method=put",
+              success: function( response ) {     
+                alert('yep');
                 console.log( response );
               }
             } ); 
