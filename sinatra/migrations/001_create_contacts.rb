@@ -12,7 +12,8 @@ Sequel.migration do
       String :type
       Integer :rating
       String :city
-      String :country
+      String :country  
+      Boolean :current
       DateTime :created
       DateTime :updated
     end
