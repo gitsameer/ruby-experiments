@@ -1,0 +1,21 @@
+<html lang="en">  
+<head>  
+  <meta charset="utf8">  
+  <title><%= @title + ' | Recall' %></title>  
+  <link href="/reset.css" rel="stylesheet">  
+  <link href="/style.css" rel="stylesheet">  
+</head>
+<body>
+<% @messages.each do |m| %>  
+  <article>  
+    <p>  
+      <%= m.body %>  
+      <span><a href="/<%= m.id %>">[edit]</a></span>  
+    </p>  
+    <p class="links">  
+      <a href="/<%= m.id %>/complete">&#8623;</a>  
+    </p>   
+  </article>  
+<% end %> 
+</body>
+</html>
