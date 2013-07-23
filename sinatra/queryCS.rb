@@ -9,7 +9,7 @@ require_relative 'models/CS'
   
 #### example 5 to get conversations for a person
 
-contact = Contacts.find(:firstname => 'Leela', :lastname => 'Abubekarova')
+contact = Contacts.find(:firstname => 'Sven', :lastname => 'Hock')
                   
 if contact != nil
  phone = contact.phone.gsub(/\.0$/,"").gsub(/[^0-9+]/, "")   
@@ -19,14 +19,25 @@ if contact != nil
  contactbyphone = ContactsByPhone.find(:normalizedphone => phone)  
  
  puts "got contact by phone " + contactbyphone.inspect
- 
- if (contactbyphone != nil && contactbyphone.group_id != nil)  
-      dataset = Messages.filter(:group_id => contactbyphone.group_id)
-      puts dataset.all.count 
+           
+ ##### find messages by group id
+ if (contactbyphone != nil && contactbyphone.group_id != nil)   
+      puts "Messages using group id =>"
+      dataset = Messages.filter(:group_id => contactbyphone.group_id) 
       dataset.each do |c| 
          puts c[:type].to_s +  " : " + c[:text].to_s
       end        
- end 
+ end                                                  
+ 
+ ##### find messages by phone number
+ 
+ if (contactbyphone != nil && contactbyphone.group_id == nil)    
+   puts "Messages using phone number =>"
+   dataset = Messages.filter(:normalizedphone => phone) 
+   dataset.each do |c| 
+      puts c[:type].to_s +  " : " + c[:text].to_s
+   end    
+ end
 end
 
 
