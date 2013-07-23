@@ -9,7 +9,30 @@ temp_sql = "select ABPerson.ROWID, ABPerson.prefix, ABPerson.first,ABPerson.last
 
 dataset = AB_DB[temp_sql]
 
-dataset.each do |row|
+dataset.each do | row |
+
+ if row[:HomeEmail].to_s.length > 0 || row[:WorkEmail].to_s.length > 0
  p row.inspect
+ end
 end
+=begin
+dataset.each do |row|
+ if row[:MobilePhone].to_s.length > 0 && row[:HomePhone].to_s.length > 0 
+   p row.inspect
+ end 
+
+ if row[:WorkPhone].to_s.length > 0 && row[:HomePhone].to_s.length > 0 
+   p row.inspect
+ end 
+
+ if row[:MobilePhone].to_s.length > 0 && row[:WorkPhone].to_s.length > 0 
+   p row.inspect
+ end 
+end
+
+=end
+
+#ds2 = dataset.to_hash(:MobilePhone, :First)
+#p ds2
+ 
 
