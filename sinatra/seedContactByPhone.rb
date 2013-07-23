@@ -3,7 +3,10 @@ require 'logger'
 require_relative 'models/CS'   #loads Contacts into DB
                                  
 #DB.logger = Logger.new($stdout) 
+                                       
                               
+# here we load all normal phones, home phones and work phones into the ContactByPhone table
+                            
 Contacts.each do |c|
    #puts c[:id].to_s + ' ' + c[:phone].to_s  + ' ' +  c[:homephone].to_s + ' ' +  c[:workphone].to_s 
   
