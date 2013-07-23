@@ -4,17 +4,27 @@ require_relative 'models/CS'
 
 #DB.logger = Logger.new($stdout)
 
-if ARGV.length < 2
+if ARGV.length < 1
   puts "Usage queryMsgsFL <first> <last>"        
 end
 
-first = ARGV[0]
-last = ARGV[1]
+first = ARGV[0].strip 
+
+if ARGV.length ==2 
+  last = ARGV[1].strip     
+else 
+  last = nil
+end
 
 
 contact = Contacts.find(:firstname => first, :lastname => last)
-                  
-if contact != nil
+puts "got contact = " + contact.inspect
+          
+if contact != nil       
+ puts "got phone => " + contact.phone.to_s    
+ 
+ abort("no phone number found") if contact.phone == nil
+ 
  phone = contact.phone.gsub(/\.0$/,"").gsub(/[^0-9+]/, "")   
  
  puts "normalized phone => " + phone

@@ -8,7 +8,15 @@ require_relative 'models/CS'
              
   
 #### example 5 to get conversations for a person
+     
+ds = Contacts.filter(:lastname => nil,:phone => nil,:workphone => nil,:homephone => nil) 
 
+puts ds.count   
+ds.each do |c|
+   puts c.firstname
+end
+ 
+ exit
 contact = Contacts.find(:firstname => 'Sven', :lastname => 'Hock')
                   
 if contact != nil

@@ -40,7 +40,7 @@ SELECT datetime(date,'unixepoch', 'localtime')  as NewDATE from message\
 SELECT datetime(date,'unixepoch', 'localtime')  as NewDATE, group_id, text from message where text like '%san telmo%'\
 \
 \
-SELECT datetime(date,'unixepoch', 'localtime')  as NewDATE, group_id, address, text from message where group_id = 136\
+SELECT datetime(date,'unixepoch', 'localtime')  as date, group_id, address, text from message where group_id = 136\
 \pard\pardeftab720\ql\qnatural
 
 \f2\fs28 \cf5 \cb6 \
