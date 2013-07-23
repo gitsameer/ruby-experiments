@@ -12,7 +12,7 @@ dataset = SMS_DB[temp_sql]
 dataset.each_with_index do | row, i |      
                              
   #exit if i > 2      
-  curphone = row[:address].gsub(/[^0-9+]/, "")    
+  curphone = row[:address].gsub(/\.0$/,"").gsub(/[^0-9+]/, "")    
   
   puts "updating " + curphone    
   curContact = ContactsByPhone[:normalizedphone=>curphone]   
@@ -23,8 +23,11 @@ dataset.each_with_index do | row, i |
      ##puts "updating"
     curContact.country =  row[:country]  
     curContact.group_id = row[:group_id]    
-    curContact.save()
-  end
+    curContact.save()     
+  else 
+    ContactsByPhone.Create(:normalizedphone=>curphone, :country=>row[:country], :group_id=>row[:group_id]
+  end                       
+  
                  
 end
 
