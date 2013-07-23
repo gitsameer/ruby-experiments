@@ -1,7 +1,7 @@
 require 'sequel'
-require 'logger'
+require 'logger'     
+require_relative 'models/Contacts'   #loads Contacts into DB
 
-DB = Sequel.connect('sqlite://cs.db')
 SMS_DB = Sequel.connect('sqlite://sms.db')
 AB_DB = Sequel.connect('sqlite://AddressBook.sqlitedb')
 
@@ -9,13 +9,30 @@ temp_sql = "select ABPerson.ROWID, ABPerson.prefix, ABPerson.first,ABPerson.last
 
 dataset = AB_DB[temp_sql]
 
-dataset.each do | row |
+dataset.each do | row |      
+   
+  Contacts.create(:csid        => row[:ROWID],
+                             :firstname   => row[:First], 
+                             :lastname    => row[:Last], 
+                             :phone       => row[:MobilePhone],     
+                             :age         => "",
+                             :rating      => "",
+                             :notes       => "",
+                             :type        => "ab",
+                             :current     => false,
+                             :homephone   => row[:HomePhone], 
+                             :workphone   => row[:WorkPhone],
+                             :email       => row[:WorkEmail]   
+                             )
 
- if row[:HomeEmail].to_s.length > 0 || row[:WorkEmail].to_s.length > 0
- p row.inspect
- end
 end
-=begin
+=begin   
+
+
+      
+                                 
+                                 
+                                 
 dataset.each do |row|
  if row[:MobilePhone].to_s.length > 0 && row[:HomePhone].to_s.length > 0 
    p row.inspect

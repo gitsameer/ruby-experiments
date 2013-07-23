@@ -1,13 +1,15 @@
 require 'spreadsheet'
 require 'sequel'    
 require 'logger'
+require_relative 'models/Contacts'
                                
 
 
-DB = Sequel.connect('sqlite://cs.db')      
+#DB = Sequel.connect('sqlite://cs.db')      
 
 #DB.logger = Logger.new($stdout)
                
+=begin
 class Sequel::Model
   def before_create
     self.created ||= Time.now 
@@ -19,6 +21,8 @@ end
 class Contacts <  Sequel::Model(:contacts)
 
 end            
+=end
+
             
 ContactList = []   
 startRow = 0   
