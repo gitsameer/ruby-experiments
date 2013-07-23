@@ -3,32 +3,18 @@ require 'sequel'
 require 'logger'
 require_relative 'models/Contacts'
                                
-
-
-#DB = Sequel.connect('sqlite://cs.db')      
-
-#DB.logger = Logger.new($stdout)
-               
-=begin
-class Sequel::Model
-  def before_create
-    self.created ||= Time.now 
-    self.updated ||= Time.now 
-    super
-  end
+if ARGV.length < 2
+  puts "Usage seedFromExcel.rb <city> <country>"        
 end
 
-class Contacts <  Sequel::Model(:contacts)
-
-end            
-=end
-
+city = ARGV[0]
+country = ARGV[1]
             
 ContactList = []   
 startRow = 0   
 current = false 
 Spreadsheet.open('/Users/sameersingh/Documents/Personal/Travel/CouchStatsNew.xls') do |book|
-    book.worksheet("Moscow").each_with_index do |row, i|        
+    book.worksheet(city).each_with_index do |row, i|        
                        
         next if i < startRow   
         
@@ -51,8 +37,8 @@ Spreadsheet.open('/Users/sameersingh/Documents/Personal/Travel/CouchStatsNew.xls
                                           :age         => row[5],
                                           :rating      => row[6],
                                           :notes       => row[7],
-                                          :city        => "Moscow",
-                                          :country     => "Russia",
+                                          :city        => city,
+                                          :country     => country,
                                           :type        => "cs",
                                           :current     => current
                                           )

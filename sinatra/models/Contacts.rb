@@ -5,7 +5,9 @@ class Contacts <  Sequel::Model(:contacts)
     self.created ||= Time.now
     self.updated ||= Time.now
     super
-  end
-
+  end   
+end 
+  
+ class ContactsByPhone <  Sequel::Model(:contactbyphone)
 end
 
