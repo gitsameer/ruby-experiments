@@ -1,7 +1,7 @@
 require 'spreadsheet'
 require 'sequel'    
 require 'logger'
-require_relative 'models/Contacts'
+require_relative 'models/CS'
                                
 if ARGV.length < 2
   puts "Usage seedFromExcel.rb <city> <country>"        

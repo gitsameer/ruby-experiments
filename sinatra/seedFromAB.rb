@@ -1,6 +1,6 @@
 require 'sequel'
 require 'logger'     
-require_relative 'models/Contacts'   #loads Contacts into DB
+require_relative 'models/CS'   #loads Contacts into DB
 
 SMS_DB = Sequel.connect('sqlite://sms.db')
 AB_DB = Sequel.connect('sqlite://AddressBook.sqlitedb')

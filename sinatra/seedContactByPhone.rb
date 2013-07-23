@@ -1,6 +1,6 @@
 require 'sequel'
 require 'logger'     
-require_relative 'models/Contacts'   #loads Contacts into DB
+require_relative 'models/CS'   #loads Contacts into DB
                                  
 #DB.logger = Logger.new($stdout) 
                               

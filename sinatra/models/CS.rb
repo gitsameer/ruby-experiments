@@ -9,5 +9,14 @@ class Contacts <  Sequel::Model(:contacts)
 end 
   
  class ContactsByPhone <  Sequel::Model(:contactbyphone)
+end    
+
+
+class Messages <  Sequel::Model(:messages)
+  def before_create
+    self.created ||= Time.now
+    self.updated ||= Time.now
+    super
+  end   
 end
 

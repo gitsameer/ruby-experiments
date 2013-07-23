@@ -1,6 +1,6 @@
 require 'sequel'
 require 'logger'     
-require_relative 'models/Contacts'   #loads Contacts into DB
+require_relative 'models/CS'   #loads Contacts into DB
 
 SMS_DB = Sequel.connect('sqlite://sms.db')
 AB_DB = Sequel.connect('sqlite://AddressBook.sqlitedb')     
@@ -23,19 +23,7 @@ dataset.each_with_index do | row, i |
   )
 
 end
-   
-=begin
 
-Messages.create(:ROWID => row[:ROWID],
-                 :date  => row[:Date], 
-                 :group_id => row[:Group_id],
-                 :country   => row[:Country],
-                 :type      => row[:Type],
-                 :address   => row[:Address],
-                 :text      => row[:Text]
-)
-
-=end
 
       
                                  
