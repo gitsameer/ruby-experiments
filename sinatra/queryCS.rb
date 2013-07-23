@@ -2,6 +2,8 @@ require 'sequel'
 require 'logger'
 
 DB = Sequel.connect('sqlite://cs.db')
+SMS_DB = Sequel.connect('sqlite://sms.db')
+AB_DB = Sequel.connect('sqlite:://AddressBook.sqlitedb')
 
 #DB.logger = Logger.new($stdout)
 
